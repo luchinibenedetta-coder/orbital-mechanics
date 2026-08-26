@@ -18,6 +18,21 @@ r = (x**2 + y**2)**0.5
 ax = -G * M_earth * x / r**3
 ay = -G * M_earth * y / r**3
 
+# Time step
+dt = 1.0  # seconds
+
+# Update velocity
+vx = vx + ax * dt
+vy = vy + ay * dt
+
+# Update position
+x = x + vx * dt
+y = y + vy * dt
+
+print("After 1 second:")
+print("Position:", x, y, "m")
+print("Velocity:", vx, vy, "m/s")
+
 print("Gravitational acceleration:", ax, ay, "m/s^2")
 print("Orbital mechanics simulation")
 print("Initial position:", x, y, "m")
