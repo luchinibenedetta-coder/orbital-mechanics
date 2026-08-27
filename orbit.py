@@ -7,7 +7,6 @@ M_earth = 5.972e24    # mass of Earth [kg]
 # Initial conditions
 x = 7.0e6             # initial x position [m]
 y = 0.0               # initial y position [m]
-
 vx = 0.0              # initial x velocity [m/s]
 vy = 7546.0           # initial y velocity [m/s]
 
@@ -21,6 +20,10 @@ ay = -G * M_earth * y / r**3
 # Simulation settings
 dt = 1.0          # time step [s]
 total_time = 5400  # total simulation time [s]
+
+# Store the trajectory
+x_positions = []
+y_positions = []
 
 # Simulation loop
 for t in range(total_time):
@@ -39,6 +42,10 @@ for t in range(total_time):
     # Update position
     x = x + vx * dt
     y = y + vy * dt
+
+#Store corrente position
+x_positions.appendi(x)
+y_position.apendi(y)
 
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
