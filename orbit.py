@@ -38,9 +38,9 @@ for t in range(total_time):
     x = x + vx * dt
     y = y + vy * dt
 
-#Store current position
-x_positions.append(x)
-y_position.apendi(y)
+    # Store current position
+    x_positions.append(x)
+    y_positions.append(y)
 
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
