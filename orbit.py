@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 print(# Orbital Mechanics Simulation
 
 # Physical constants
@@ -50,7 +52,10 @@ y_position.apendi(y)
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
-print("Gravitational acceleration:", ax, ay, "m/s^2")
-print("Orbital mechanics simulation")
-print("Initial position:", x, y, "m")
-print("Initial velocity:", vx, vy, "m/s"))
+#Plot the orbit
+plt.plot(x_positions, y_positions)
+plt.xlabel("x position [m]")
+plt.ylabel("y position [m]")
+plt.title("Satellite Orbit")
+plt.axis("equal")
+plt.show()
