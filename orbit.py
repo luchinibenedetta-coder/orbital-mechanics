@@ -47,7 +47,7 @@ print("Final velocity:", vx, vy, "m/s")
 
 # Plot the orbit
 plt.plot(
-    [x/1000 for x in x in x_positions]
+    [x/1000 for x in x in x_positions],
     [y/1000 for y in y_positions],
     label="Satellite trajectory"
 )
