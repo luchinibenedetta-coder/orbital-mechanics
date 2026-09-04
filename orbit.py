@@ -48,6 +48,9 @@ print("Final velocity:", vx, vy, "m/s")
 # Plot the orbit
 plt.plot(x_positions, y_positions, label="Satellite trajectory")
 
+# Draw satellite
+plt.scatter(x_positions[-1], y_positions [-1], s=50, label="Satellite")
+
 # Draw Earth
 earth = plt.Circle((0, 0), 6.371e6, alpha=0.5)
 plt.gca().add_patch(earth)
