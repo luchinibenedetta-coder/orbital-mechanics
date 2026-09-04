@@ -46,17 +46,26 @@ print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
 # Plot the orbit
-plt.plot(x_positions, y_positions, label="Satellite trajectory")
+plt.plot(
+    [x/1000 for x in x in x_positions]
+    [y/1000 for y in y_positions],
+    label="Satellite trajectory"
+)
 
 # Draw satellite
-plt.scatter(x_positions[-1], y_positions [-1], s=50, label="Satellite")
+plt.scatter(
+    x_positions[-1]/1000,
+    y_positions[-1]/1000,
+    s=50,
+    label="Satellite"
+)
 
 # Draw Earth
 earth = plt.Circle((0, 0), 6.371e6, alpha=0.5)
 plt.gca().add_patch(earth)
 
-plt.xlabel("x position [m]")
-plt.ylabel("y position [m]")
+plt.xlabel("x position [km]")
+plt.ylabel("y position [km]")
 plt.title("Satellite Orbit")
 plt.axis("equal")
 plt.legend()
