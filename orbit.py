@@ -45,10 +45,16 @@ for t in range(total_time):
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
-#Plot the orbit
-plt.plot(x_positions, y_positions)
+# Plot the orbit
+plt.plot(x_positions, y_positions, label="Satellite trajectory")
+
+# Draw Earth
+earth = plt.Circle((0, 0), 6.371e6, color="blue", alpha=0.5)
+plt.gca().add_patch(earth)
+
 plt.xlabel("x position [m]")
 plt.ylabel("y position [m]")
 plt.title("Satellite Orbit")
 plt.axis("equal")
+plt.legend()
 plt.show()
