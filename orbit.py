@@ -61,7 +61,7 @@ plt.scatter(
 )
 
 # Draw Earth
-earth = plt.Circle((0, 0), 6.371e6, alpha=0.5)
+earth = plt.Circle((0, 0), 6371e6, alpha=0.5)
 plt.gca().add_patch(earth)
 
 plt.xlabel("x position [km]")
