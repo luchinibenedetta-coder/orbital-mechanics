@@ -45,6 +45,12 @@ for t in range(total_time):
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
+# Calculate final attitude
+earth_radius = 6.371e6 # Earth radius [m]
+altitude = r - earth_radius
+
+print("Final altitude:",altitude / 1000, "km"
+
 # Plot the orbit
 plt.plot(
     [x/1000 for x in x_positions],
