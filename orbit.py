@@ -45,6 +45,10 @@ for t in range(total_time):
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
+speed = (vx**2 + vy**2)**0.5
+print("Final speed:", speed, "m/s")
+p4int("Final speed:", speed / 1000, "km/s")
+
 # Calculate final attitude
 earth_radius = 6.371e6 # Earth radius [m]
 altitude = r - earth_radius
