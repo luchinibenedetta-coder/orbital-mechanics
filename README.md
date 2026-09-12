@@ -6,7 +6,7 @@ This project simulates the motion of a satellite orbiting Earth under the influe
 
 ## Physical Model
 The satellite is modeled as a point mass moving under the gravitational attraction of Earth. The gravitational acceleration is calculated from Newton's law of universal gravitation:
-a = −GM/r³ · r
+a=−GM/r³ · r
 where G is the gravitational constant, M is the mass of Earth, and r is the distance between the satellite and the centre of Earth.
 
 ## Numerical method
