@@ -18,7 +18,7 @@ At each time step, the gravitational acceleration is calculated from the satelli
 ## Initial Conditions
 | Parameter | Value |
 |---|---:|
-| Initial distance from Earth'scenter | 7000 km |
+| Initial distance from Earth's center | 7000 km |
 | Initial velocity | 7546 m/s |
 | Time step | 1 s |
 | Simulation time | 5400 s|
