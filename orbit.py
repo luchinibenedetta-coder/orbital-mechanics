@@ -54,9 +54,11 @@ orbital_period = 2*3.14159*(7000000**3 / (G*M_earth))**0.5
 
 print("Orbital_period:", orbital_period, "s")
 print("Orbital_period:", orbital_period / 60, "min")
+final_r = (x**2 + y**2)**0.5
 specific_energy = (speed**2 / 2) - (G * M_earth / final_r)
 
 print("Specific mechanical energy:", specific_energy, "J/kg")
+initial_r = 7.0e6
 theoretical_speed = (G * M_earth / initial_r)**0.5
 print("Theoretical circular speed:", theoretical_speed, "m/s")
 difference = speed - theoretical_speed
@@ -64,7 +66,7 @@ print("Speed difference:", difference, "m/s")
 
 # Calculate final attitude
 earth_radius = 6.371e6 # Earth radius [m]
-altitude = r - earth_radius
+altitude = final_r - earth_radius
 
 print("Final altitude:",altitude / 1000, "km")
 
