@@ -45,9 +45,15 @@ for t in range(total_time):
 print("Final position:", x, y, "m")
 print("Final velocity:", vx, vy, "m/s")
 
+# Calculate final speed
 speed = (vx**2 + vy**2)**0.5
+
 print("Final speed:", speed, "m/s")
-p4int("Final speed:", speed / 1000, "km/s")
+print("Final speed:", speed / 1000, "km/s")
+orbital_period = 2*3.14159*(7000000**3 / (G*M_earth))**0.5
+
+print("Orbital_period:", orbital_period, "s")
+print("Orbital_period:", orbital_period / 60, "min")
 
 # Calculate final attitude
 earth_radius = 6.371e6 # Earth radius [m]
