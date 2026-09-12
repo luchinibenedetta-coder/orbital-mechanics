@@ -5,8 +5,8 @@ Numerical simulation of orbital motion using Python.
 This project simulates the motion of a satellite orbiting Earth under the influence of Earth's gravity.
 
 ## Physical Model
-The satellite is modeled as a point mass moving under the gravitational attraction of Earth. This gravitational acceleration is calculated using Newton's law of universal gravitation:
-a⃗ = −GM/r³ · r⃗
+The satellite is modeled as a point mass moving under the gravitational attraction of Earth. The gravitational acceleration is calculated from Newton's law of universal gravitation:
+a = −GM/r³ · r
 where G is the gravitational constant, M is the mass of Earth, and r is the distance between the satellite and the centre of Earth.
 
 ## Numerical method
