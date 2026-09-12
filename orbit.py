@@ -79,9 +79,9 @@ plt.plot(
 
 plt.scatter(
     x_positions[0]/1000,
-    y_positions[0]/1000.
-    s=50
-    label=" Starting position"
+    y_positions[0]/1000,
+    s=50,
+    label="Starting position"
 )
 
 # Draw satellite
