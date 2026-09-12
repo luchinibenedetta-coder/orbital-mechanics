@@ -77,6 +77,13 @@ plt.plot(
     label="Satellite trajectory"
 )
 
+plt.scatter(
+    x_positions[0]/1000,
+    y_positions[0]/1000.
+    s=50
+    label=" Starting position"
+)
+
 # Draw satellite
 plt.scatter(
     x_positions[-1]/1000,
