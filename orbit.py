@@ -49,7 +49,7 @@ print("Final velocity:", vx, vy, "m/s")
 earth_radius = 6.371e6 # Earth radius [m]
 altitude = r - earth_radius
 
-print("Final altitude:",altitude / 1000, "km"
+print("Final altitude:",altitude / 1000, "km")
 
 # Plot the orbit
 plt.plot(
