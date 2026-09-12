@@ -55,7 +55,12 @@ orbital_period = 2*3.14159*(7000000**3 / (G*M_earth))**0.5
 print("Orbital_period:", orbital_period, "s")
 print("Orbital_period:", orbital_period / 60, "min")
 specific_energy = (speed**2 / 2) - (G * M_earth / final_r)
-p4int("Specific mechanical energy:", specific_energy, "J/kg")
+
+print("Specific mechanical energy:", specific_energy, "J/kg")
+theoretical_speed = (G * M_earth / initial_r)**0.5
+print("Theoretical circular speed:", theoretical_speed, "m/s")
+difference = speed - theoretical_speed
+print("Speed difference:", difference, "m/s")
 
 # Calculate final attitude
 earth_radius = 6.371e6 # Earth radius [m]
