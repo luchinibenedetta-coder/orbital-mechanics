@@ -50,7 +50,7 @@ speed = (vx**2 + vy**2)**0.5
 
 print("Final speed:", speed, "m/s")
 print("Final speed:", speed / 1000, "km/s")
-orbital_period = 2*3.14159*(7000000**3 / (G*M_earth))**0.5
+orbital_period = 2*3.14159*(initial_r**3 / (G*M_earth))**0.5
 
 print("Orbital_period:", orbital_period, "s")
 print("Orbital_period:", orbital_period / 60, "min")
