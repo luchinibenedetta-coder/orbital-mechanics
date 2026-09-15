@@ -35,7 +35,7 @@ The simulated final speed differs from the theoretical circular speed by only ab
 
 ## Visualization
 The plot below shows the simulated satellite trajectory, together with the initial and final satellite positions and the Earth.
-![Satellite's orbit](images/orbit.png)
+![Satellite's orbit](orbit.png)
 
 ## Future Improvements
 - Improve the numerical integration method.
