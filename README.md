@@ -1,25 +1,24 @@
 # Orbital Mechanics Simulation
-Numerical simulation of orbital motion using Python.
+A numerical simulation of satellite orbital motion around Earth using Python.
 
 ## Objective
-This project simulates the motion of a satellite orbiting Earth under the influence of Earth's gravity.
+The objective of this project is to simulate the motion of a satellite orbiting Earth under the influence of gravity and to compare the numerical results with theoretical predictions.
 
 ## Physical Model
-The satellite is modeled as a point mass moving under the gravitational attraction of Earth. The gravitational acceleration is calculated from Newton's law of universal gravitation:
-a=−GM/r³ · r
-where G is the gravitational constant, M is the mass of Earth, and r is the distance between the satellite and the centre of Earth.
+The satellite's mass is assumed negligible compared to Earth's mass, so its effect on Earth's gravitational field is neglected. The gravitational acceleration is calculated from Newton's law of universal gravitation:
+a = −GM r/r³
+where G is the gravitational constant, M is the mass of Earth, and r is the distance between the satellite and the center of Earth.
 
-## Numerical method
-The equations of motion are integrated numerically using a time step of 1 second.
-At each time step, the gravitational acceleration is calculated from the satellite's current position. The velocity is then updated, followed by the position.
+## Numerical Method
+The equations of motion are integrated numerically using the Euler method with a fixed time step of 1 second. At each time step, the gravitational acceleration is calculated from the satellite's current position. The velocity is then updated, followed by the position.
 
 ## Initial Conditions
 | Parameter | Value |
 |---|---:|
 | Initial distance from Earth's center | 7000 km |
-| Initial velocity | 7546 m/s |
+| Initial velocity | 7546 m/s (tangential) |
 | Time step | 1 s |
-| Simulation time | 5400 s|
+| Simulation time | 5400 s |
 
 ## Results
 The simulation produces a nearly circular orbit with the following values:
@@ -31,7 +30,13 @@ The simulation produces a nearly circular orbit with the following values:
 | Theoretical orbital period | 97.14 min |
 | Final altitude | 630.69 km |
 | Specific mechanical energy | -2.85 × 10⁷ J/kg |
-The simulated final speed differs from the theoretical circular speed by only about 1.77 m/s, indicating that the numerical simulation remains very close to the expected circular orbit.
+The simulated final speed differs from the theoretical circular speed by only about 1.77 m/s, indicating that the numerical simulation remains very close to the expected circular orbit. The negative specific mechanical energy confirms that the satellite remains gravitationally bound to Earth throughout the simulated orbit.
+
+## Limitations
+- The simulation assumes a two-body system consisting of Earth and the satellite.
+- Earth's gravitational field is modeled as spherically symmetric, with constant mass and radius.
+- Atmospheric drag, Earth's rotation, and other perturbing forces are not included.
+- The numerical integration uses a fixed time step of 1 second.
 
 ## Visualization
 The plot below shows the simulated satellite trajectory, together with the initial and final satellite positions and the Earth.
