@@ -64,7 +64,7 @@ print("Theoretical circular speed:", theoretical_speed, "m/s")
 difference = speed - theoretical_speed
 print("Speed difference:", difference, "m/s")
 
-# Calculate final attitude
+# Calculate final altitude
 earth_radius = 6.371e6 # Earth radius [m]
 altitude = final_r - earth_radius
 
