@@ -30,6 +30,7 @@ The simulation produces a nearly circular orbit with the following values:
 | Theoretical orbital period | 97.14 min |
 | Final altitude | 630.69 km |
 | Specific mechanical energy | -2.85 × 10⁷ J/kg |
+
 The simulated final speed differs from the theoretical circular speed by only about 1.77 m/s, indicating that the numerical simulation remains very close to the expected circular orbit. The negative specific mechanical energy confirms that the satellite remains gravitationally bound to Earth throughout the simulated orbit.
 
 ## Limitations
