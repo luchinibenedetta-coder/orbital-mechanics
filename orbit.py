@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 # Physical constants
 G = 6.67430e-11       # gravitational constant [m^3 kg^-1 s^-2]
 M_earth = 5.972e24    # mass of Earth [kg]
+earth_radius = 6.371e6    # radius of Earth [m]
 
 # Initial conditions
 x = 7.0e6             # initial x position [m]
 y = 0.0               # initial y position [m]
 vx = 0.0              # initial x velocity [m/s]
 vy = 7546.0           # initial y velocity [m/s]
+initial_r = (x**2 + y**2)**0.5
 
 # Simulation settings
 dt = 1.0          # time step [s]
@@ -58,7 +60,6 @@ final_r = (x**2 + y**2)**0.5
 specific_energy = (speed**2 / 2) - (G * M_earth / final_r)
 
 print("Specific mechanical energy:", specific_energy, "J/kg")
-initial_r = 7.0e6
 theoretical_speed = (G * M_earth / initial_r)**0.5
 print("Theoretical circular speed:", theoretical_speed, "m/s")
 difference = speed - theoretical_speed
@@ -93,7 +94,7 @@ plt.scatter(
 )
 
 # Draw Earth
-earth = plt.Circle((0, 0), 6371, alpha=0.5)
+earth = plt.Circle((0, 0), earth_radius / 1000, alpha=0.5)
 plt.gca().add_patch(earth)
 
 plt.xlabel("x position [km]")
