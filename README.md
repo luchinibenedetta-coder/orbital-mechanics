@@ -31,7 +31,7 @@ The simulation produces a nearly circular orbit with the following values:
 | Final altitude | 628.95 km |
 | Specific mechanical energy | -2.85 × 10⁷ J/kg |
 
-The simulated final speed differs from the theoretical circular speed by only about 1.77 m/s, indicating that the numerical simulation remains very close to the expected circular orbit. The negative specific mechanical energy confirms that the satellite remains gravitationally bound to Earth throughout the simulated orbit.
+After one full orbit, the simulated final speed differs from the theoretical circular speed by only about 0.10 m/s, and the final altitude (628.95 km) is very close to the initial one (629 km). This indicates that the numerical simulation remains very close to the expected circular orbit, with the satellite ending up near its starting point. The negative specific mechanical energy confirms that the satellite remains gravitationally bound to Earth throughout the simulated orbit.
 
 ## Limitations
 - The simulation assumes a two-body system consisting of Earth and the satellite.
