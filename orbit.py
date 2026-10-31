@@ -17,7 +17,7 @@ initial_r = (x**2 + y**2)**0.5
 
 # Simulation settings
 dt = 1.0          # time step [s]
-total_time = 5400  # total simulation time [s]
+total_time = 5840  # total simulation time [s]
 
 # Store the trajectory
 x_positions = []
