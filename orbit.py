@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation, PillowWriter
 
 # Orbital Mechanics Simulation
 
@@ -71,36 +72,35 @@ altitude = final_r - earth_radius
 
 print("Final altitude:",altitude / 1000, "km")
 
-# Plot the orbit
-plt.plot(
-    [x/1000 for x in x_positions],
-    [y/1000 for y in y_positions],
-    label="Satellite trajectory"
-)
-
-plt.scatter(
-    x_positions[0]/1000,
-    y_positions[0]/1000,
-    s=50,
-    label="Starting position"
-)
-
-# Draw satellite
-plt.scatter(
-    x_positions[-1]/1000,
-    y_positions[-1]/1000,
-    s=50,
-    label="Satellite"
-)
+# Animate the prbit
+fig,ax= plt.subplots()
 
 # Draw Earth
-earth = plt.Circle((0, 0), earth_radius / 1000, alpha=0.5)
-plt.gca().add_patch(earth)
+ax.add_patch(plt.Circle((0,0), earth_radius/ 1000, alpha=0.5))
 
-plt.xlabel("x position [km]")
-plt.ylabel("y position [km]")
-plt.title("Satellite Orbit")
-plt.axis("equal")
-plt.legend()
-plt.savefig("orbit.png")
-plt.show()
+# Draw the full trajectory as a faint line
+ax.plot(
+    [x/1000 for x in x_positions],
+    [y/1000 for y in y_positions],
+    alpha=0.3
+)
+
+# Moving satellite (starts empty, updated at every frame)
+satellite,=ax.plot([], [], "o")
+
+ax.set_aspect("equal")
+ax.set_xlabel("x position [km]")
+ax.set_ylabel("y position [km]")
+ax.set_title("Satellite Orbit")
+
+step=20 # use one position every 20 s of simulated time
+
+def update (frame):
+    i=frame*step
+    satellite.set_data([x_positions[i]/1000], [y_positions[i]/1000])
+    return satellite,
+
+ani= FuncAnimation(fig,update,frames=len(x_positions)//step,interval=30)
+
+# Save the animation as GIF
+ani.save("orbit.gif",writer=PillowWriter(fps=30))
