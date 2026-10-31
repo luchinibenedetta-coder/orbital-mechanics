@@ -1,4 +1,6 @@
+import numpy as np
 import matplotlib.pyplot as plt
+from scipy.ndimage import map_coordinates
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 # Orbital Mechanics Simulation
@@ -73,34 +75,71 @@ altitude = final_r - earth_radius
 print("Final altitude:",altitude / 1000, "km")
 
 # Animate the prbit
-fig,ax= plt.subplots()
+plt.style.use("dark_background")
 
-# Draw Earth
-ax.add_patch(plt.Circle((0,0), earth_radius/ 1000, alpha=0.5))
+# Earth texture: NASA Blue Marble (equirectangular map, longitude -180...180, latitude 90...-90)
+texture=plt.imread("earth.jpg")/255.0
+tex_h,tex_w,_=texture.shape
 
-# Draw the full trajectory as a faint line
-ax.plot(
-    [x/1000 for x in x_positions],
-    [y/1000 for y in y_positions],
-    alpha=0.3
-)
+# Part of the Earth facing the viewer: the point at the center of the disk
+centre_lat=np.radians(25) # latitude of the center [deg -> rad]
+center_lon=np.radians(-15) # longitude of the center [deg -> rad]
 
-# Moving satellite (starts empty, updated at every frame)
-satellite,=ax.plot([], [], "o")
+# Build an image of Earth seen from the side
+R = earth_radius / 1000      # Earth radius [km]
+n = 400                      # image resolution [pixels]
+lim = 1.15 * R               # half-size of the image (leaves room for the atmosphere)
+gx, gy = np.meshgrid(np.linspace(-lim, lim, n), np.linspace(-lim, lim, n))
+px, py = gx / R, gy / R      # pixel position in Earth radii
+rho = np.sqrt(px**2 + py**2)
+z = np.sqrt(np.clip(1 - rho**2, 0, 1))   # height of the sphere toward the viewer
 
+# For each pixel of the disk, find the latitude and longitude of the point on the sphere
+lat=np.arcsin(np.clip(z*np.sin(center_lat)+py*np.cos(center_lat),-1,1))
+lon = center_lon + np.arctan2(px, z * np.cos(center_lat) - py * np.sin(center_lat))
+lon = (lon + np.pi) % (2 * np.pi) - np.pi
+ 
+# Look up the texture color for each pixel (bilinear interpolation)
+u = (lon + np.pi) / (2 * np.pi) * (tex_w - 1)
+v = (np.pi / 2 - lat) / np.pi * (tex_h - 1)
+colors = np.dstack([map_coordinates(texture[..., c], [v, u], order=1) for c in range(3)])
+ 
+# Simple shading: sunlight from the upper left, darker toward the edge
+light = np.clip(-0.4 * px + 0.3 * py + 0.8 * z, 0, 1)
+earth_img = np.zeros((n, n, 4))
+earth_img[..., :3] = colors * (0.45 + 0.55 * light)[..., None]
+earth_img[..., 3] = rho <= 1
+ 
+# Thin blue atmosphere around the Earth
+glow = np.exp(-(rho - 1) / 0.03) * (rho > 1) * 0.6
+earth_img[rho > 1, :3] = [0.35, 0.6, 1.0]
+earth_img[rho > 1, 3] = glow[rho > 1]
+ 
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.imshow(earth_img, extent=[-lim, lim, -lim, lim], origin="lower")
+ 
+# Satellite trajectory (grows as the satellite moves) and satellite
+trail, = ax.plot([], [], color="white", alpha=0.6, linewidth=1)
+satellite, = ax.plot([], [], "o", color="#ffd84d", markersize=5)
+ 
+ax.set_xlim(-8500, 8500)
+ax.set_ylim(-8500, 8500)
 ax.set_aspect("equal")
 ax.set_xlabel("x position [km]")
 ax.set_ylabel("y position [km]")
 ax.set_title("Satellite Orbit")
-
-step=20 # use one position every 20 s of simulated time
-
-def update (frame):
-    i=frame*step
+fig.tight_layout()
+ 
+step = 40  # use one position every 40 s of simulated time
+ 
+def update(frame):
+    i = frame * step
+    trail.set_data([x/1000 for x in x_positions[:i+1]],
+                   [y/1000 for y in y_positions[:i+1]])
     satellite.set_data([x_positions[i]/1000], [y_positions[i]/1000])
-    return satellite,
-
-ani= FuncAnimation(fig,update,frames=len(x_positions)//step,interval=30)
-
-# Save the animation as GIF
-ani.save("orbit.gif",writer=PillowWriter(fps=30))
+    return trail, satellite
+ 
+ani = FuncAnimation(fig, update, frames=len(x_positions)//step, interval=30)
+ 
+# Save the animation as a GIF
+ani.save("orbit.gif", writer=PillowWriter(fps=25), dpi=80)
