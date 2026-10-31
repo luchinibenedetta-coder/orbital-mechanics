@@ -74,7 +74,7 @@ altitude = final_r - earth_radius
 
 print("Final altitude:",altitude / 1000, "km")
 
-# Animate the prbit
+# Animate the orbit
 plt.style.use("dark_background")
 
 # Earth texture: NASA Blue Marble (equirectangular map, longitude -180...180, latitude 90...-90)
@@ -82,7 +82,7 @@ texture=plt.imread("earth.jpg")/255.0
 tex_h,tex_w,_=texture.shape
 
 # Part of the Earth facing the viewer: the point at the center of the disk
-centre_lat=np.radians(25) # latitude of the center [deg -> rad]
+center_lat=np.radians(25) # latitude of the center [deg -> rad]
 center_lon=np.radians(-15) # longitude of the center [deg -> rad]
 
 # Build an image of Earth seen from the side
