@@ -40,7 +40,7 @@ The simulated final speed differs from the theoretical circular speed by only ab
 - The numerical integration uses a fixed time step of 1 second.
 
 ## Visualization
-The plot below shows the simulated satellite trajectory, together with the initial and final satellite positions and the Earth.
+The animation below shows the satellite completing one full orbit around Earth. The orbit is drawn in the plane of the figure, so the Earth is seen from the side, as it would appear for a polar orbit. The Earth image is only a visual aid and is not used in the calculations.
 
 ![Satellite's orbit](orbit.gif)
 
@@ -49,3 +49,6 @@ The plot below shows the simulated satellite trajectory, together with the initi
 - Simulate different types of orbits, including elliptical and escape trajectories.
 - Compare numerical results with analytical predictions.
 - Investigate numerical errors and their dependence on the time step.
+
+## Credits
+Earth texture: [NASA Earth Observatory](https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/), Blue Marble: Next Generation.
